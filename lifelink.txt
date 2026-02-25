@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LifeLink – Saving Lives Through Smart Emergency Connectivity</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar glass">
+    <div class="logo">LifeLink</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#blood">Blood Availability</a></li>
+      <li><a href="#beds">Bed Availability</a></li>
+      <li><a href="#organ">Organ Donation</a></li>
+      <li><a href="#emergency">Emergency Request</a></li>
+      <li><a href="#dashboard">Dashboard</a></li>
+      <li><a href="#login">Login/Register</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-content glass">
+      <h1>Saving Lives Through Smart Emergency Connectivity</h1>
+      <p>Connecting patients, hospitals, blood banks, organ donors, and ambulances in real time. Access blood, beds, and organ donation support instantly.</p>
+      <div class="hero-cta">
+        <a href="#emergency" class="btn btn-primary">Find Help Now</a>
+        <a href="#organ" class="btn btn-secondary">Register as Donor</a>
+      </div>
+      <div class="stats">
+        <div class="stat glass">
+          <span class="stat-number" id="livesSaved">0</span>
+          <span class="stat-label">Lives Saved</span>
+        </div>
+        <div class="stat glass">
+          <span class="stat-number" id="activeHospitals">0</span>
+          <span class="stat-label">Active Hospitals</span>
+        </div>
+        <div class="stat glass">
+          <span class="stat-number" id="registeredDonors">0</span>
+          <span class="stat-label">Registered Donors</span>
+        </div>
+        <div class="stat glass">
+          <span class="stat-number" id="availableUnits">0</span>
+          <span class="stat-label">Available Units</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <h2>About LifeLink</h2>
+    <div class="about-cards">
+      <div class="about-card glass">
+        <img src="img/blood-drop.svg" alt="Blood Shortage" />
+        <h3>Blood Shortages</h3>
+        <p>Millions face critical delays due to blood shortages. LifeLink provides real-time blood group availability and connects donors instantly.</p>
+      </div>
+      <div class="about-card glass">
+        <img src="img/hospital-bed.svg" alt="Bed Visibility" />
+        <h3>Hospital Bed Visibility</h3>
+        <p>Finding available ICU or general beds is a challenge. LifeLink offers live bed counts and status updates for faster admissions.</p>
+      </div>
+      <div class="about-card glass">
+        <img src="img/organ-donation.svg" alt="Organ Donation" />
+        <h3>Organ Donor Coordination</h3>
+        <p>Organ matching and consent are complex. LifeLink streamlines donor registration, matching, and secure consent for life-saving transplants.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="module" id="blood">
+    <h2>Blood Availability</h2>
+    <form class="search-form glass">
+      <label for="bloodGroup">Search Blood Group:</label>
+      <select id="bloodGroup">
+        <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+        <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
+      </select>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    <div class="results">
+      <div class="result-card glass available">
+        <span class="blood-group">A+</span>
+        <span class="badge">Available</span>
+        <span class="units">12 units</span>
+      </div>
+      <div class="result-card glass unavailable">
+        <span class="blood-group">O-</span>
+        <span class="badge">Low</span>
+        <span class="units">2 units</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="module" id="beds">
+    <h2>Hospital Bed Availability</h2>
+    <div class="bed-filters glass">
+      <label><input type="radio" name="bedType" checked /> ICU</label>
+      <label><input type="radio" name="bedType" /> General</label>
+    </div>
+    <div class="bed-status">
+      <div class="bed-card glass">
+        <span class="hospital-name">City Hospital</span>
+        <span class="bed-count">ICU Beds: <strong>3/10</strong></span>
+        <div class="progress-bar"><div class="progress" style="width:30%"></div></div>
+        <span class="status-indicator available">Available</span>
+      </div>
+      <div class="bed-card glass">
+        <span class="hospital-name">Metro Care</span>
+        <span class="bed-count">General Beds: <strong>0/20</strong></span>
+        <div class="progress-bar"><div class="progress" style="width:0%"></div></div>
+        <span class="status-indicator unavailable">Full</span>
+      </div>
+    </div>
+    <div class="map-placeholder glass">[Map Placeholder]</div>
+  </section>
+
+  <section class="module" id="organ">
+    <h2>Organ Donation</h2>
+    <form class="donor-form glass">
+      <label for="donorName">Name:</label>
+      <input type="text" id="donorName" required />
+      <label for="donorBlood">Blood Group:</label>
+      <select id="donorBlood">
+        <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+        <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
+      </select>
+      <label for="organType">Organ to Donate:</label>
+      <select id="organType">
+        <option>Kidney</option><option>Liver</option><option>Heart</option><option>Lung</option>
+      </select>
+      <label><input type="checkbox" required /> I consent to donate and share my details securely.</label>
+      <button type="submit" class="btn btn-primary">Register as Donor</button>
+    </form>
+    <div class="organ-dashboard glass">
+      <h3>Matching Dashboard</h3>
+      <div class="urgency-indicator">Urgency: <span class="high">High</span></div>
+      <div class="impact-stats">
+        <div>Donors Registered: <strong>120</strong></div>
+        <div>Matches Found: <strong>8</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="module" id="emergency">
+    <h2>Emergency Request</h2>
+    <form class="emergency-form glass">
+      <label for="urgency">Urgency:</label>
+      <input type="range" id="urgency" min="1" max="5" />
+      <label for="service">Service Needed:</label>
+      <select id="service">
+        <option>Blood</option><option>Bed</option><option>Organ</option>
+      </select>
+      <label>Auto-location: <span class="location">[Simulated Location]</span></label>
+      <button type="submit" class="btn btn-primary">Request Help</button>
+    </form>
+    <div class="tracking-status glass">
+      <span>Status: <strong>Request Sent</strong></span>
+      <div class="animated-confirmation">✔️</div>
+    </div>
+  </section>
+
+  <section class="module" id="dashboard">
+    <h2>Dashboard</h2>
+    <div class="dashboard-tabs glass">
+      <button class="tab active">Admin</button>
+      <button class="tab">Hospital</button>
+      <button class="tab">Donor</button>
+    </div>
+    <div class="dashboard-content">
+      <div class="dashboard-panel glass">
+        <h3>Analytics</h3>
+        <canvas id="chart-bar"></canvas>
+        <canvas id="chart-pie"></canvas>
+      </div>
+      <div class="dashboard-panel glass">
+        <h3>Live Statistics</h3>
+        <ul>
+          <li>Blood Units: <strong>120</strong></li>
+          <li>Beds Available: <strong>15</strong></li>
+          <li>Donors: <strong>80</strong></li>
+        </ul>
+      </div>
+      <div class="dashboard-panel glass">
+        <h3>Achievements</h3>
+        <div class="badges">
+          <span class="badge">Top Donor</span>
+          <span class="badge">Life Saver</span>
+        </div>
+        <div class="progress-tracking">
+          <span>Progress:</span>
+          <div class="progress-bar"><div class="progress" style="width:70%"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="module" id="login">
+    <h2>Login / Register</h2>
+    <form class="login-form glass">
+      <label for="email">Email:</label>
+      <input type="email" id="email" required />
+      <label for="password">Password:</label>
+      <input type="password" id="password" required />
+      <button type="submit" class="btn btn-primary">Login</button>
+      <button type="button" class="btn btn-secondary">Register</button>
+    </form>
+  </section>
+
+  <section class="module" id="contact">
+    <h2>Contact Us</h2>
+    <form class="contact-form glass">
+      <label for="contactName">Name:</label>
+      <input type="text" id="contactName" required />
+      <label for="contactEmail">Email:</label>
+      <input type="email" id="contactEmail" required />
+      <label for="contactMsg">Message:</label>
+      <textarea id="contactMsg" required></textarea>
+      <button type="submit" class="btn btn-primary">Send Message</button>
+    </form>
+    <div class="faq glass">
+      <h3>FAQ</h3>
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-title">How does LifeLink work?</button>
+          <div class="accordion-content">LifeLink connects patients, hospitals, blood banks, and donors in real time for emergency healthcare coordination.</div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-title">Is my data secure?</button>
+          <div class="accordion-content">Yes, all data is securely stored and only accessible to authorized users.</div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-title">How do I become a donor?</button>
+          <div class="accordion-content">Register as a donor in the Organ Donation section and provide your consent.</div>
+        </div>
+      </div>
+    </div>
+    <div class="social-icons">
+      <a href="#"><img src="img/twitter.svg" alt="Twitter" /></a>
+      <a href="#"><img src="img/facebook.svg" alt="Facebook" /></a>
+      <a href="#"><img src="img/linkedin.svg" alt="LinkedIn" /></a>
+    </div>
+    <div class="privacy-policy glass">Privacy Policy placeholder</div>
+    <footer class="footer glass">&copy; 2026 LifeLink | Built for Hackathons</footer>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
+/* LifeLink Styles – Modern, Futuristic, Medical Theme */
+:root {
+  --primary: #e53935;
+  --secondary: #1976d2;
+  --accent: #ffffff;
+  --glass-bg: rgba(255,255,255,0.18);
+  --glass-border: rgba(255,255,255,0.35);
+  --shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
+  --radius: 1.5rem;
+  --font: 'Montserrat', Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: #222;
+  min-height: 100vh;
+}
+
+.navbar {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 2rem;
+  background: var(--glass-bg);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+}
+.logo {
+  font-size: 2rem; font-weight: 700; color: var(--primary);
+  letter-spacing: 2px;
+}
+.nav-links {
+  list-style: none; display: flex; gap: 1.5rem; margin: 0;
+}
+.nav-links li a {
+  color: var(--secondary); text-decoration: none; font-weight: 600;
+  padding: 0.5rem 1rem; border-radius: 0.5rem;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-links li a:hover, .nav-links li a:focus {
+  background: var(--primary); color: var(--accent);
+}
+
+.hero {
+  min-height: 80vh; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(120deg, #e53935 0%, #1976d2 100%);
+  color: var(--accent);
+  padding: 4rem 1rem 2rem 1rem;
+}
+.hero-content {
+  max-width: 700px; margin: auto; text-align: center;
+  padding: 3rem 2rem; border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  animation: fadeIn 1.2s;
+}
+.hero h1 {
+  font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+.hero p {
+  font-size: 1.2rem; margin-bottom: 2rem;
+}
+.hero-cta {
+  display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem;
+}
+.btn {
+  padding: 0.75rem 2rem; border: none; border-radius: 2rem;
+  font-size: 1rem; font-weight: 700; cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: var(--shadow);
+}
+.btn-primary {
+  background: var(--primary); color: var(--accent);
+}
+.btn-primary:hover { background: #b71c1c; }
+.btn-secondary {
+  background: var(--secondary); color: var(--accent);
+}
+.btn-secondary:hover { background: #0d47a1; }
+
+.stats {
+  display: flex; gap: 2rem; justify-content: center; margin-top: 2rem;
+  flex-wrap: wrap;
+}
+.stat {
+  min-width: 120px; padding: 1rem 1.5rem; border-radius: var(--radius);
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  text-align: center;
+  color: var(--secondary);
+  font-weight: 700;
+  transition: transform 0.2s;
+}
+.stat:hover { transform: translateY(-6px) scale(1.05); }
+.stat-number {
+  font-size: 2rem; color: var(--primary); display: block;
+  animation: popIn 1s;
+}
+
+.about {
+  padding: 4rem 1rem 2rem 1rem; background: #fff;
+  text-align: center;
+}
+.about h2 { font-size: 2rem; margin-bottom: 2rem; color: var(--secondary); }
+.about-cards {
+  display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;
+}
+.about-card {
+  flex: 1 1 220px; max-width: 320px; padding: 2rem 1rem;
+  border-radius: var(--radius); box-shadow: var(--shadow);
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-bottom: 1rem;
+}
+.about-card:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 12px 40px 0 rgba(31,38,135,0.22);
+}
+.about-card img {
+  width: 48px; margin-bottom: 1rem;
+}
+
+.module {
+  padding: 4rem 1rem 2rem 1rem;
+  background: #f7fafd;
+}
+.module h2 { color: var(--primary); text-align: center; margin-bottom: 2rem; }
+
+.search-form, .donor-form, .emergency-form, .login-form, .contact-form {
+  display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: center;
+  padding: 2rem 1rem; border-radius: var(--radius);
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+}
+.search-form label, .donor-form label, .emergency-form label, .login-form label, .contact-form label {
+  flex: 1 1 120px; min-width: 120px; font-weight: 600; color: var(--secondary);
+}
+.search-form select, .donor-form select, .donor-form input, .emergency-form select, .emergency-form input, .login-form input, .contact-form input, .contact-form textarea {
+  flex: 2 1 180px; padding: 0.5rem; border-radius: 0.5rem; border: 1px solid #ccc;
+  font-size: 1rem;
+}
+.contact-form textarea { min-height: 80px; }
+
+.results, .bed-status {
+  display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center;
+}
+.result-card, .bed-card {
+  min-width: 160px; padding: 1rem 1.5rem; border-radius: var(--radius);
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  display: flex; flex-direction: column; align-items: center;
+  margin-bottom: 1rem;
+  transition: transform 0.2s;
+}
+.result-card:hover, .bed-card:hover { transform: scale(1.04); }
+.blood-group { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+.badge { background: var(--secondary); color: var(--accent); border-radius: 1rem; padding: 0.2rem 0.8rem; margin: 0.5rem 0; font-size: 0.9rem; }
+.result-card.unavailable .badge { background: var(--primary); }
+.units { font-size: 1.1rem; color: #333; }
+
+.bed-filters { display: flex; gap: 2rem; justify-content: center; margin-bottom: 2rem; }
+.bed-filters label { font-weight: 600; color: var(--secondary); }
+.progress-bar { width: 100%; height: 10px; background: #e3e3e3; border-radius: 1rem; margin: 0.5rem 0; }
+.progress { height: 100%; background: var(--primary); border-radius: 1rem; transition: width 0.5s; }
+.status-indicator { font-weight: 700; margin-top: 0.5rem; }
+.status-indicator.available { color: #43a047; }
+.status-indicator.unavailable { color: #e53935; }
+.map-placeholder {
+  margin: 2rem auto 0 auto; max-width: 400px; text-align: center;
+  padding: 2rem; border-radius: var(--radius);
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  color: #888;
+}
+
+.organ-dashboard {
+  margin-top: 2rem; padding: 2rem 1rem; border-radius: var(--radius);
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+.urgency-indicator { margin: 1rem 0; font-weight: 700; }
+.urgency-indicator .high { color: var(--primary); }
+.impact-stats { display: flex; gap: 2rem; justify-content: center; margin-top: 1rem; }
+
+.tracking-status {
+  margin-top: 2rem; text-align: center; padding: 1.5rem 1rem;
+  border-radius: var(--radius); background: var(--glass-bg);
+  border: 1px solid var(--glass-border); box-shadow: var(--shadow);
+}
+.animated-confirmation {
+  font-size: 2rem; color: #43a047; margin-top: 1rem;
+  animation: popIn 0.8s;
+}
+
+.dashboard-tabs { display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem; }
+.tab {
+  padding: 0.7rem 2rem; border: none; border-radius: 2rem; font-weight: 700;
+  background: var(--secondary); color: var(--accent); cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.tab.active, .tab:hover { background: var(--primary); color: var(--accent); }
+.dashboard-content {
+  display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;
+}
+.dashboard-panel {
+  flex: 1 1 220px; max-width: 320px; padding: 2rem 1rem;
+  border-radius: var(--radius); box-shadow: var(--shadow);
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  margin-bottom: 1rem;
+}
+.badges { display: flex; gap: 1rem; justify-content: center; margin-bottom: 1rem; }
+.badges .badge { background: var(--secondary); color: var(--accent); border-radius: 1rem; padding: 0.2rem 0.8rem; font-size: 0.9rem; }
+.progress-tracking { margin-top: 1rem; }
+
+.faq { margin: 2rem auto; max-width: 600px; }
+.accordion { border-radius: var(--radius); overflow: hidden; }
+.accordion-item { border-bottom: 1px solid #e3e3e3; }
+.accordion-title {
+  width: 100%; text-align: left; background: none; border: none;
+  font-size: 1.1rem; font-weight: 700; color: var(--secondary);
+  padding: 1rem; cursor: pointer; outline: none;
+  transition: background 0.2s;
+}
+.accordion-title:hover, .accordion-title:focus { background: #f0f4fa; }
+.accordion-content {
+  max-height: 0; overflow: hidden; background: #f7fafd; transition: max-height 0.3s ease;
+  padding: 0 1rem;
+}
+.accordion-item.active .accordion-content {
+  max-height: 120px; padding: 1rem;
+}
+
+.social-icons { display: flex; gap: 1.5rem; justify-content: center; margin: 2rem 0; }
+.social-icons img { width: 32px; filter: drop-shadow(0 2px 8px #1976d2aa); transition: transform 0.2s; }
+.social-icons img:hover { transform: scale(1.15); }
+.privacy-policy {
+  margin: 2rem auto; max-width: 600px; text-align: center;
+  padding: 1rem; border-radius: var(--radius);
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  color: #888;
+}
+.footer {
+  margin: 2rem auto 0 auto; max-width: 600px; text-align: center;
+  padding: 1rem; border-radius: var(--radius);
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  color: #888;
+}
+
+/* Glassmorphism Utility */
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes popIn {
+  0% { transform: scale(0.7); opacity: 0; }
+  80% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .about-cards, .dashboard-content, .stats, .results, .bed-status, .impact-stats {
+    flex-direction: column; align-items: center;
+  }
+  .navbar { flex-direction: column; gap: 1rem; }
+}
+@media (max-width: 600px) {
+  .hero-content, .about-card, .dashboard-panel, .organ-dashboard, .contact-form, .faq, .privacy-policy, .footer {
+    padding: 1rem 0.5rem;
+  }
+  .navbar { padding: 0.5rem 1rem; }
+  .nav-links { flex-wrap: wrap; gap: 0.5rem; }
+  .btn, .tab { padding: 0.5rem 1rem; font-size: 0.95rem; }
+}
+# LifeLink Backend (Python Flask)
+# Main app entry point
+
+from flask import Flask
+from flask_cors import CORS
+from routes.auth import auth_bp
+from routes.blood import blood_bp
+from routes.beds import beds_bp
+from routes.organ import organ_bp
+from routes.emergency import emergency_bp
+from routes.dashboard import dashboard_bp
+from routes.contact import contact_bp
+from routes.users import users_bp
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'your-secret-key'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+CORS(app)
+
+# Register blueprints
+app.register_blueprint(auth_bp, url_prefix='/api/auth')
+app.register_blueprint(blood_bp, url_prefix='/api/blood')
+app.register_blueprint(beds_bp, url_prefix='/api/beds')
+app.register_blueprint(organ_bp, url_prefix='/api/organ')
+app.register_blueprint(emergency_bp, url_prefix='/api/emergency')
+app.register_blueprint(dashboard_bp, url_prefix='/api/dashboard')
+app.register_blueprint(contact_bp, url_prefix='/api/contact')
+app.register_blueprint(users_bp, url_prefix='/api/users')
+
+if __name__ == '__main__':
+    app.run(debug=True)
+# Emergency Request routes for LifeLink
+from flask import Blueprint, request, jsonify
+from models import db, EmergencyRequest
+
+emergency_bp = Blueprint('emergency', __name__)
+
+@emergency_bp.route('/request', methods=['POST'])
+def create_request():
+    data = request.get_json()
+    user_id = data.get('user_id')
+    service = data.get('service')
+    urgency = data.get('urgency')
+    location = data.get('location')
+    req = EmergencyRequest(user_id=user_id, service=service, urgency=urgency, location=location)
+    db.session.add(req)
+    db.session.commit()
+    return jsonify({'message': 'Emergency request sent'})
+
+@emergency_bp.route('/status/<int:req_id>', methods=['GET'])
+def request_status(req_id):
+    req = EmergencyRequest.query.get(req_id)
+    if req:
+        return jsonify({'status': req.status})
+    return jsonify({'error': 'Request not found'}), 404
+# Organ Donation routes for LifeLink
+from flask import Blueprint, request, jsonify
+from models import db, Donor
+
+organ_bp = Blueprint('organ', __name__)
+
+@organ_bp.route('/register', methods=['POST'])
+def register_donor():
+    data = request.get_json()
+    name = data.get('name')
+    blood_group = data.get('blood_group')
+    organ_type = data.get('organ_type')
+    consent = data.get('consent', False)
+    donor = Donor(name=name, blood_group=blood_group, organ_type=organ_type, consent=consent)
+    db.session.add(donor)
+    db.session.commit()
+    return jsonify({'message': 'Donor registered'})
+
+@organ_bp.route('/dashboard', methods=['GET'])
+def donor_dashboard():
+    donors = Donor.query.all()
+    matches = Donor.query.filter_by(consent=True).count()  # Example: count consented donors
+    return jsonify({
+        'donors_registered': len(donors),
+        'matches_found': matches
+    })
+# LifeLink Backend Models (Flask SQLAlchemy)
+from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
+
+db = SQLAlchemy()
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password_hash = db.Column(db.String(128), nullable=False)
+    role = db.Column(db.String(20), nullable=False)  # Admin, Hospital, Donor
+    name = db.Column(db.String(100))
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
+class Hospital(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    beds_total = db.Column(db.Integer, default=0)
+    beds_available = db.Column(db.Integer, default=0)
+    icu_total = db.Column(db.Integer, default=0)
+    icu_available = db.Column(db.Integer, default=0)
+    blood_stock = db.relationship('BloodStock', backref='hospital', lazy=True)
+
+class BloodStock(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    hospital_id = db.Column(db.Integer, db.ForeignKey('hospital.id'), nullable=False)
+    blood_group = db.Column(db.String(5), nullable=False)
+    units = db.Column(db.Integer, default=0)
+
+class Donor(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    blood_group = db.Column(db.String(5), nullable=False)
+    organ_type = db.Column(db.String(20))
+    consent = db.Column(db.Boolean, default=False)
+
+class EmergencyRequest(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    service = db.Column(db.String(20))  # Blood, Bed, Organ
+    urgency = db.Column(db.Integer)
+    location = db.Column(db.String(100))
+    status = db.Column(db.String(20), default='Sent')
+
+class ContactMessage(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
+    email = db.Column(db.String(120))
+    message = db.Column(db.Text)
+# Blood Availability routes for LifeLink
+from flask import Blueprint, request, jsonify
+from models import db, BloodStock, Hospital
+
+blood_bp = Blueprint('blood', __name__)
+
+@blood_bp.route('/search', methods=['GET'])
+def search_blood():
+    blood_group = request.args.get('blood_group')
+    results = BloodStock.query.filter_by(blood_group=blood_group).all()
+    data = [
+        {
+            'hospital': Hospital.query.get(stock.hospital_id).name,
+            'units': stock.units,
+            'blood_group': stock.blood_group
+        }
+        for stock in results
+    ]
+    return jsonify(data)
+
+@blood_bp.route('/update', methods=['POST'])
+def update_blood():
+    data = request.get_json()
+    hospital_id = data.get('hospital_id')
+    blood_group = data.get('blood_group')
+    units = data.get('units')
+    stock = BloodStock.query.filter_by(hospital_id=hospital_id, blood_group=blood_group).first()
+    if stock:
+        stock.units = units
+    else:
+        stock = BloodStock(hospital_id=hospital_id, blood_group=blood_group, units=units)
+        db.session.add(stock)
+    db.session.commit()
+    return jsonify({'message': 'Blood stock updated'})# Authentication routes for LifeLink
+from flask import Blueprint, request, jsonify
+from models import db, User
+from werkzeug.security import generate_password_hash, check_password_hash
+
+auth_bp = Blueprint('auth', __name__)
+
+@auth_bp.route('/register', methods=['POST'])
+def register():
+    data = request.get_json()
+    email = data.get('email')
+    password = data.get('password')
+    role = data.get('role', 'Donor')
+    name = data.get('name', '')
+    if User.query.filter_by(email=email).first():
+        return jsonify({'error': 'Email already registered'}), 400
+    user = User(email=email, role=role, name=name)
+    user.set_password(password)
+    db.session.add(user)
+    db.session.commit()
+    return jsonify({'message': 'User registered successfully'})
+
+@auth_bp.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    email = data.get('email')
+    password = data.get('password')
+    user = User.query.filter_by(email=email).first()
+    if user and user.check_password(password):
+        return jsonify({'message': 'Login successful', 'role': user.role, 'name': user.name})
+    return jsonify({'error': 'Invalid credentials'}), 401
+# Dashboard routes for LifeLink
+from flask import Blueprint, jsonify
+from models import User, Hospital, BloodStock, Donor
+
+dashboard_bp = Blueprint('dashboard', __name__)
+
+@dashboard_bp.route('/stats', methods=['GET'])
+def stats():
+    lives_saved = 1240  # Example static value
+    active_hospitals = Hospital.query.count()
+    registered_donors = Donor.query.count()
+    available_units = BloodStock.query.count()
+    return jsonify({
+        'lives_saved': lives_saved,
+        'active_hospitals': active_hospitals,
+        'registered_donors': registered_donors,
+        'available_units': available_units
+    })
+    # LifeLink Backend (Python Flask)
+
+## Setup
+1. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+2. Initialize the database:
+   ```python
+   # In Python shell
+   from app import app
+   from models import db
+   with app.app_context():
+       db.init_app(app)
+       db.create_all()
+   ```
+3. Run the server:
+   ```bash
+   python app.py
+   ```
+
+## API Endpoints
+- `/api/auth/register` (POST): Register user
+- `/api/auth/login` (POST): Login user
+- `/api/blood/search` (GET): Search blood group
+- `/api/blood/update` (POST): Update blood stock
+- `/api/beds/list` (GET): List bed availability
+- `/api/beds/update` (POST): Update bed availability
+- `/api/organ/register` (POST): Register organ donor
+- `/api/organ/dashboard` (GET): Donor dashboard stats
+- `/api/emergency/request` (POST): Create emergency request
+- `/api/emergency/status/<id>` (GET): Emergency request status
+- `/api/dashboard/stats` (GET): Dashboard statistics
+- `/api/contact/send` (POST): Send contact message
+- `/api/users/<id>` (GET): Get user profile
+- `/api/users/update/<id>` (POST): Update user profile
+
+## Notes
+- All endpoints accept/return JSON.
+- CORS enabled for frontend connection.
+- Use SQLite for quick hackathon setup.
+- Add seed/demo data as needed for testing.
+
+## Hackathon Ready
+- Modular, clean, and ready for integration with your HTML/CSS frontend.
+- Add more routes or logic as needed!
+Flask
+Flask-Cors
+Flask-SQLAlchemy
+Werkzeug
+# User profile routes for LifeLink
+from flask import Blueprint, request, jsonify
+from models import db, User
+
+users_bp = Blueprint('users', __name__)
+
+@users_bp.route('/<int:user_id>', methods=['GET'])
+def get_user(user_id):
+    user = User.query.get(user_id)
+    if user:
+        return jsonify({
+            'id': user.id,
+            'email': user.email,
+            'role': user.role,
+            'name': user.name
+        })
+    return jsonify({'error': 'User not found'}), 404
+
+@users_bp.route('/update/<int:user_id>', methods=['POST'])
+def update_user(user_id):
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({'error': 'User not found'}), 404
+    data = request.get_json()
+    user.name = data.get('name', user.name)
+    db.session.commit()
+    return jsonify({'message': 'User updated'})
+# Contact form routes for LifeLink
+from flask import Blueprint, request, jsonify
+from models import db, ContactMessage
+
+contact_bp = Blueprint('contact', __name__)
+
+@contact_bp.route('/send', methods=['POST'])
+def send_message():
+    data = request.get_json()
+    name = data.get('name')
+    email = data.get('email')
+    message = data.get('message')
+    msg = ContactMessage(name=name, email=email, message=message)
+    db.session.add(msg)
+    db.session.commit()
+    return jsonify({'message': 'Message sent'})
+# Hospital Bed Availability routes for LifeLink
+from flask import Blueprint, request, jsonify
+from models import db, Hospital
+
+beds_bp = Blueprint('beds', __name__)
+
+@beds_bp.route('/list', methods=['GET'])
+def list_beds():
+    hospitals = Hospital.query.all()
+    data = [
+        {
+            'name': h.name,
+            'beds_total': h.beds_total,
+            'beds_available': h.beds_available,
+            'icu_total': h.icu_total,
+            'icu_available': h.icu_available
+        }
+        for h in hospitals
+    ]
+    return jsonify(data)
+
+@beds_bp.route('/update', methods=['POST'])
+def update_beds():
+    data = request.get_json()
+    hospital_id = data.get('hospital_id')
+    beds_available = data.get('beds_available')
+    icu_available = data.get('icu_available')
+    hospital = Hospital.query.get(hospital_id)
+    if hospital:
+        hospital.beds_available = beds_available
+        hospital.icu_available = icu_available
+        db.session.commit()
+        return jsonify({'message': 'Bed availability updated'})
+    return jsonify({'error': 'Hospital not found'}), 404
+
